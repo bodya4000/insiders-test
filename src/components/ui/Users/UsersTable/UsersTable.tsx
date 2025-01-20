@@ -4,8 +4,8 @@ import UserRow from './UserRow/UserRow';
 import styles from './UsersTable.module.scss';
 
 const UsersTable: FC = () => {
-	const { users } = useUsersSelector();
-
+	const { users, departments, country, status } = useUsersSelector();
+	const finalUsers = users.filter(user => (departments.length > 0 ? departments.includes(user.department.value) : true) && (!country || user.country.value == country) && (!status || user.status.value == status));
 	return (
 		<table className={styles.table}>
 			<thead>
@@ -18,7 +18,7 @@ const UsersTable: FC = () => {
 				</tr>
 			</thead>
 			<tbody>
-				{users.map(user => (
+				{finalUsers.map(user => (
 					<UserRow key={user.name} user={user} />
 				))}
 			</tbody>

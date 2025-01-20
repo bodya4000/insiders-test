@@ -1,13 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersData } from '../../public/data/data';
+import { Country, Department, Status } from '../enums';
 import { TUser, TUserEdit } from '../types';
 
 interface UsersSlice {
+	status: Status | undefined;
+	departments: Department[];
+	country: Country | undefined;
 	users: TUser[];
 	popup: boolean;
 }
 
 const initialState: UsersSlice = {
+	status: undefined,
+	departments: [],
+	country: undefined,
 	users: usersData,
 	popup: false,
 };
@@ -48,9 +55,37 @@ export const usersSlice = createSlice({
 		togglePopPup(state) {
 			state.popup = !state.popup;
 		},
+
+		addDepartment(state, action: PayloadAction<Department>) {
+			state.departments?.push(action.payload);
+		},
+		removeDepartment(state, action: PayloadAction<Department>) {
+			return {
+				...state,
+				departments: state.departments?.filter(dep => dep !== action.payload),
+			};
+		},
+
+		setCountry(state, action: PayloadAction<Country>) {
+			state.country = action.payload;
+		},
+
+		setStatus(state, action: PayloadAction<Status>) {
+			if (state.status == action.payload) {
+				state.status = undefined;
+			} else {
+				state.status = action.payload;
+			}
+		},
+
+		resetFiltering(state) {
+			state.status = undefined;
+			state.departments = [];
+			state.country = undefined;
+		},
 	},
 });
 
-export const { editUser, deleteUser, saveUser, togglePopPup } = usersSlice.actions;
+export const { editUser, deleteUser, saveUser, togglePopPup, addDepartment, removeDepartment, setCountry, setStatus, resetFiltering } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -15,14 +15,14 @@ interface AddUserProps {
 const AddUser: FC<AddUserProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const state = useUserEditSelector();
-	
+
 	console.log(state);
-	
+
 	useEffect(() => {
 		return () => {
 			dispatch(resetUserInformation());
 		};
-	}, []);
+	}, [dispatch]);
 
 	const handleNameChange = (name: string) => {
 		dispatch(setName(name));

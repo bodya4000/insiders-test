@@ -8,28 +8,22 @@ interface DefaultSelectProps {
 	options: { name: string; value: string }[] | string[];
 	label?: string;
 	className?: string;
+	disabled?: boolean;
 }
 
-const DefaultSelect: FC<DefaultSelectProps> = ({ value, onChange, options, label, className }) => {
+const DefaultSelect: FC<DefaultSelectProps> = ({ disabled, value, onChange, options, label, className }) => {
 	const randomGeneratedId = useMemo(() => generateId('select'), []);
 
 	const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
 		const selectedValue = e.target.value;
-
-		// Знаходимо відповідний об'єкт
-		const selectedOption =
-			typeof options[0] === 'string'
-				? selectedValue // Якщо це масив рядків, повертаємо рядок
-				: (options as { name: string; value: string }[]).find(option => option.value === selectedValue); // Знаходимо об'єкт
-
-		// Передаємо знайдений об'єкт у onChange
+		const selectedOption = typeof options[0] === 'string' ? selectedValue : (options as { name: string; value: string }[]).find(option => option.value === selectedValue);
 		if (selectedOption) {
 			onChange(selectedOption);
 		}
 	};
 
 	return (
-		<div className={`${styles.container} ${className || ''}`}>
+		<div className={`${styles.container} ${className || ''} ${disabled && styles.container_disabled}`}>
 			{label && (
 				<label className={styles.label} htmlFor={randomGeneratedId}>
 					{label}
