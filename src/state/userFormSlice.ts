@@ -17,8 +17,8 @@ const initialState: UserInformationState = {
 	status: undefined,
 };
 
-const userSlice = createSlice({
-	name: 'userInformation',
+const userFormSlice = createSlice({
+	name: 'userForm',
 	initialState,
 	reducers: {
 		setName(state, action: PayloadAction<string>) {
@@ -38,7 +38,7 @@ const userSlice = createSlice({
 			console.log(state.department?.value);
 			console.log(state.country?.value);
 			console.log(state.status?.value);
-			
+
 			state.status = action.payload;
 		},
 		resetUserInformation(state) {
@@ -54,6 +54,6 @@ const userSlice = createSlice({
 	},
 });
 
-export const { setName, setDepartment, setCountry, setStatus, resetUserInformation, setCurrentUser } = userSlice.actions;
+export const { setName, setDepartment, setCountry, setStatus, resetUserInformation, setCurrentUser } = userFormSlice.actions;
 
-export default userSlice.reducer;
+export default userFormSlice.reducer;

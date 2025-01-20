@@ -3,7 +3,7 @@ import { generateId } from '../../../../utils/functions';
 import styles from './DefaultSelect.module.scss';
 
 interface DefaultSelectProps {
-	value: string;
+	value: string | undefined;
 	onChange: (option: { name: string; value: string } | string) => void;
 	options: { name: string; value: string }[] | string[];
 	label?: string;

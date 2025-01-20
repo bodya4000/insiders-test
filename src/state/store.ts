@@ -1,12 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import userEditReducer from './userEditSlice';
+import userFormReducer from './userFormSlice';
 import userReducer from './userSlice';
 
 export const store = configureStore({
 	reducer: {
 		users: userReducer,
-		userEdit: userEditReducer,
+		userForm: userFormReducer,
 	},
 });
 
@@ -15,4 +15,4 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useUsersSelector = () => useSelector((state: RootState) => state.users);
-export const useUserEditSelector = () => useSelector((state: RootState) => state.userEdit);
+export const useUserFormSelector = () => useSelector((state: RootState) => state.userForm);

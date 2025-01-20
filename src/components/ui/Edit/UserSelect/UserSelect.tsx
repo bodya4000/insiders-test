@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { useAppDispatch, useUserEditSelector, useUsersSelector } from '../../../../state/store';
-import { setCurrentUser } from '../../../../state/userEditSlice';
+import { useAppDispatch, useUserFormSelector, useUsersSelector } from '../../../../state/store';
+import { setCurrentUser } from '../../../../state/userFormSlice';
 import DefaultSelect from '../../common/DefaultSelect/DefaultSelect';
 
 const UserSelect: FC = () => {
 	const { users } = useUsersSelector();
-	const { currentName } = useUserEditSelector();
+	const { currentName } = useUserFormSelector();
 	const dispatch = useAppDispatch();
 
 	const usersNames = users.map(user => user.name);
