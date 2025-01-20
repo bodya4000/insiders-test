@@ -4,7 +4,7 @@ import styles from './DefaultSelect.module.scss';
 
 interface DefaultSelectProps {
 	value: string;
-	onChange: (value: string) => void;
+	onChange: (option: { name: string; value: string } | string) => void;
 	options: { name: string; value: string }[] | string[];
 	label?: string;
 	className?: string;
@@ -14,7 +14,18 @@ const DefaultSelect: FC<DefaultSelectProps> = ({ value, onChange, options, label
 	const randomGeneratedId = useMemo(() => generateId('select'), []);
 
 	const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-		onChange(e.target.value);
+		const selectedValue = e.target.value;
+
+		// Знаходимо відповідний об'єкт
+		const selectedOption =
+			typeof options[0] === 'string'
+				? selectedValue // Якщо це масив рядків, повертаємо рядок
+				: (options as { name: string; value: string }[]).find(option => option.value === selectedValue); // Знаходимо об'єкт
+
+		// Передаємо знайдений об'єкт у onChange
+		if (selectedOption) {
+			onChange(selectedOption);
+		}
 	};
 
 	return (

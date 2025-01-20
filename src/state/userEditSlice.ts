@@ -31,6 +31,14 @@ const userSlice = createSlice({
 			state.country = action.payload;
 		},
 		setStatus(state, action: PayloadAction<{ name: string; value: Status }>) {
+			console.log(state.department?.name);
+			console.log(state.country?.name);
+			console.log(state.status?.name);
+
+			console.log(state.department?.value);
+			console.log(state.country?.value);
+			console.log(state.status?.value);
+			
 			state.status = action.payload;
 		},
 		resetUserInformation(state) {

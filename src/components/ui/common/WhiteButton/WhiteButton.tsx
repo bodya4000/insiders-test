@@ -11,7 +11,6 @@ interface WhiteButtonProps {
 }
 
 const WhiteButton: FC<WhiteButtonProps> = ({ text, active, to, onClick, disabled}) => {
-	console.log(disabled);
 	
 	if (to)
 		return (
@@ -20,7 +19,7 @@ const WhiteButton: FC<WhiteButtonProps> = ({ text, active, to, onClick, disabled
 			</Link>
 		);
 
-	return <button onClick={onClick} className={`${styles.button} ${active ? styles.button_active : ''} ${disabled ? styles.button_disable : ''}`}>{text}</button>;
+	return <button disabled={disabled} onClick={onClick} className={`${styles.button} ${active ? styles.button_active : ''} ${disabled ? styles.button_disable : ''}`}>{text}</button>;
 };
 
 export default WhiteButton;

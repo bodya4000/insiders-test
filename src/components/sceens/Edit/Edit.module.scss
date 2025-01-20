@@ -11,12 +11,12 @@
 	letter-spacing: 6px;
 
 	&:not(:last-child) {
-		margin-bottom: calc(60rem/16);
+		margin-bottom: calc(60rem / 16);
 	}
 }
 
 .edit {
 	display: flex;
 	flex-direction: column;
-	gap: calc(60rem/16);
+	gap: calc(60rem / 16);
 }

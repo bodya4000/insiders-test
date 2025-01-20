@@ -10,7 +10,6 @@ interface UserRowProps {
 const UserRow: FC<UserRowProps> = ({ user }) => {
 	const dispatch = useAppDispatch();
 	const handleDelete = () => {
-		console.log('click');
 		dispatch(deleteUser(user.name))
 	}
 	return (

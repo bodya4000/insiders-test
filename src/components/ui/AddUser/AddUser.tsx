@@ -1,22 +1,28 @@
 import { FC, useEffect, useMemo } from 'react';
-import { Country, Department, enumToList, Status } from '../../../../enums';
-import { useAppDispatch, useUserEditSelector } from '../../../../state/store';
-import { resetUserInformation, setCountry, setDepartment, setName, setStatus } from '../../../../state/userEditSlice';
-import { editUser } from '../../../../state/userSlice';
-import DefaultInput from '../../common/DefaultInput/DefaultInput';
-import DefaultSelect from '../../common/DefaultSelect/DefaultSelect';
-import WhiteButton from '../../common/WhiteButton/WhiteButton';
-import styles from './UserInformation.module.scss';
+import { Country, Department, enumToList, Status } from '../../../enums';
+import { useAppDispatch, useUserEditSelector } from '../../../state/store';
+import { resetUserInformation, setCountry, setDepartment, setName, setStatus } from '../../../state/userEditSlice';
+import { saveUser, togglePopPup } from '../../../state/userSlice';
+import styles from '../Edit/UserInformation/UserInformation.module.scss';
+import DefaultInput from '../common/DefaultInput/DefaultInput';
+import DefaultSelect from '../common/DefaultSelect/DefaultSelect';
+import WhiteButton from '../common/WhiteButton/WhiteButton';
 
-const UserInformation: FC = () => {
+interface AddUserProps {
+	className?: string;
+}
+
+const AddUser: FC<AddUserProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const state = useUserEditSelector();
-
+	
+	console.log(state);
+	
 	useEffect(() => {
 		return () => {
 			dispatch(resetUserInformation());
 		};
-	}, [dispatch]);
+	}, []);
 
 	const handleNameChange = (name: string) => {
 		dispatch(setName(name));
@@ -37,7 +43,7 @@ const UserInformation: FC = () => {
 
 	const handleSave = () => {
 		dispatch(
-			editUser({
+			saveUser({
 				currentUser: state.currentName,
 				name: state.name,
 				department: state.department,
@@ -46,6 +52,7 @@ const UserInformation: FC = () => {
 			})
 		);
 		dispatch(resetUserInformation());
+		dispatch(togglePopPup());
 	};
 
 	const isSaveDisabled = () => {
@@ -58,7 +65,7 @@ const UserInformation: FC = () => {
 	const statuses = useMemo(() => enumToList(Status), []);
 
 	return (
-		<section className={styles.info}>
+		<section className={`${styles.info} ${className && className}`}>
 			<h2 className={styles.info__title}>User Information</h2>
 			<form onSubmit={handleSubmit}>
 				<div className={styles.info__fields}>
@@ -69,7 +76,13 @@ const UserInformation: FC = () => {
 				</div>
 
 				<div className={styles.info__btns}>
-					<WhiteButton onClick={() => dispatch(resetUserInformation())} text='Undo' />
+					<WhiteButton
+						onClick={() => {
+							dispatch(togglePopPup());
+							dispatch(resetUserInformation());
+						}}
+						text='Undo'
+					/>
 					<WhiteButton disabled={isSaveDisabled()} onClick={handleSave} text='Save' />
 				</div>
 			</form>
@@ -77,4 +90,4 @@ const UserInformation: FC = () => {
 	);
 };
 
-export default UserInformation;
+export default AddUser;

@@ -4,10 +4,12 @@ import { TUser, TUserEdit } from '../types';
 
 interface UsersSlice {
 	users: TUser[];
+	popup: boolean;
 }
 
 const initialState: UsersSlice = {
 	users: usersData,
+	popup: false,
 };
 
 export const usersSlice = createSlice({
@@ -28,15 +30,27 @@ export const usersSlice = createSlice({
 				console.warn(`User with name "${currentUser}" not found.`);
 			}
 		},
-		deleteUser(state, action: PayloadAction<string>) {
+		saveUser(state, action: PayloadAction<TUserEdit>) {
+			const { name, department, country, status } = action.payload;
 			console.log(action.payload);
-			console.log(state.users);
+			if (name && department && country && status) {
+				state.users.push({
+					name,
+					department,
+					country,
+					status,
+				});
+			}
+		},
+		deleteUser(state, action: PayloadAction<string>) {
 			state.users = state.users.filter(user => user.name != action.payload);
-			console.log(state.users);
+		},
+		togglePopPup(state) {
+			state.popup = !state.popup;
 		},
 	},
 });
 
-export const { editUser, deleteUser } = usersSlice.actions;
+export const { editUser, deleteUser, saveUser, togglePopPup } = usersSlice.actions;
 
 export default usersSlice.reducer;
