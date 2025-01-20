@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { usersData } from '../../public/data/data';
-import { Country, Department, Status } from '../enums';
+import { Country, Department, enumToList, Status } from '../enums';
 import { TUser, TUserEdit } from '../types';
 
 interface UsersSlice {
@@ -39,13 +39,12 @@ export const usersSlice = createSlice({
 		},
 		saveUser(state, action: PayloadAction<TUserEdit>) {
 			const { name, department, country, status } = action.payload;
-			console.log(action.payload);
-			if (name && department && country && status) {
+			if (name) {
 				state.users.push({
 					name,
-					department,
-					country,
-					status,
+					department: department || enumToList(Department)[0],
+					country: country || enumToList(Country)[0],
+					status: status || enumToList(Status)[0],
 				});
 			}
 		},

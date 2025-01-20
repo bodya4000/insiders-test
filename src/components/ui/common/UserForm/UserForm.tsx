@@ -6,7 +6,7 @@ import { resetUserInformation, setCountry, setDepartment, setName, setStatus } f
 import DefaultInput from '../../common/DefaultInput/DefaultInput';
 import DefaultSelect from '../../common/DefaultSelect/DefaultSelect';
 import WhiteButton from '../../common/WhiteButton/WhiteButton';
-import styles from './UserInformation.module.scss';
+import styles from './UseForm.module.scss';
 
 interface UserFormProps {
 	onSave: (data: { currentUser: string; name: string; department: { name: string; value: Department } | undefined; country: { name: string; value: Country } | undefined; status: { name: string; value: Status } | undefined }) => void;
@@ -53,6 +53,7 @@ const UserForm: FC<UserFormProps> = ({ onSave, className }) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		handleSave();
 	};
 
 	const handleSave = () => {
