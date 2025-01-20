@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useLocation } from 'react-router';
-import WhiteButton from '../WhiteButton/WhiteButton';
+import WhiteButton from '../common/WhiteButton/WhiteButton';
 import styles from './Header.module.scss';
 
 const Header: FC = () => {

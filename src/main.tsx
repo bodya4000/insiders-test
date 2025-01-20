@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import Edit from './components/sceens/Edit/Edit.tsx';
+import Users from './components/sceens/Users/Users.tsx';
 import './index.module.scss';
 import Layout from './Layout.tsx';
 
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'users',
-				element: <>user list</>,
+				element: <Users />,
 			},
 			{
 				path: 'edit',

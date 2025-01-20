@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import DefaultInput from '../../common/DefaultInput/DefaultInput';
 import DefaultSelect from '../../common/DefaultSelect/DefaultSelect';
-import WhiteButton from '../../WhiteButton/WhiteButton';
 import styles from './UserInformation.module.scss';
+import WhiteButton from '../../common/WhiteButton/WhiteButton'
 
 const UserInformation: FC = () => {
 	return (
