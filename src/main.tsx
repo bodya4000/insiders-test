@@ -1,9 +1,11 @@
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
 import Edit from './components/sceens/Edit/Edit.tsx';
 import Users from './components/sceens/Users/Users.tsx';
 import './index.module.scss';
 import Layout from './Layout.tsx';
+import { store } from './state/store.ts';
 
 const router = createBrowserRouter([
 	{
@@ -29,6 +31,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
 	<>
-		<RouterProvider router={router} />
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
 	</>
 );

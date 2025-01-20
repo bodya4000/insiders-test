@@ -27,3 +27,10 @@ export enum Department {
 	LEG = ' Legal',
 	PM = 'Product Management',
 }
+
+export function enumToList<T extends Record<string, string | number>>(enumObj: T): { name: T[keyof T]; value: keyof T }[] {
+	return Object.entries(enumObj).map(([key, value]) => ({
+		name: value as T[keyof T],
+		value: key as keyof T,
+	}));
+}
