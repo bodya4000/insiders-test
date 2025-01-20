@@ -1,0 +1,13 @@
+.button {
+	display: flex;
+	padding: calc(14rem / 16) calc(84rem / 16);
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: calc(10rem / 16);
+	border: 1px solid #c4c4c4;
+
+	&_active {
+		background: #c4c4c4;
+	}
+}

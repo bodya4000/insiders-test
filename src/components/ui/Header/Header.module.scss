@@ -1,0 +1,10 @@
+.header {
+	padding: calc(20rem / 16) 0;
+	border-bottom: 1px solid black;
+
+	&_nav {
+		display: flex;
+		justify-content: center;
+		gap: calc(20rem / 16);
+	}
+}
