@@ -4,7 +4,7 @@ import styles from './WhiteButton.module.scss';
 
 interface WhiteButtonProps {
 	text: string;
-	to: string;
+	to?: string;
 	active?: boolean;
 }
 

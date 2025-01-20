@@ -13,5 +13,10 @@
 	&:not(:last-child) {
 		margin-bottom: calc(60rem/16);
 	}
-	
+}
+
+.edit {
+	display: flex;
+	flex-direction: column;
+	gap: calc(60rem/16);
 }
