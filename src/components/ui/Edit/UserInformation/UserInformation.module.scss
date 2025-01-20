@@ -1,0 +1,43 @@
+.info {
+	&__title {
+		color: #000;
+		font-feature-settings: 'liga' off, 'clig' off;
+
+		font-family: Rubik;
+		font-size: calc(20rem / 16);
+		font-style: normal;
+		font-weight: 400;
+		line-height: 160%;
+		letter-spacing: 0.2px;
+
+		&:not(:last-child) {
+			margin-bottom: calc(40rem / 16);
+		}
+	}
+
+	&__fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		row-gap: calc(80rem / 16);
+		column-gap: calc(40rem / 16);
+
+		&:not(:last-child) {
+			margin-bottom: calc(40rem / 16);
+		}
+	}
+
+	&__btns {
+		display: flex;
+		justify-content: flex-end;
+		gap: calc(20rem / 16);
+
+		:nth-child(1) {
+			padding: calc(14rem / 16) calc(30rem / 16);
+		}
+	}
+
+	&__field_to_end {
+		justify-content: flex-end;
+	}
+}

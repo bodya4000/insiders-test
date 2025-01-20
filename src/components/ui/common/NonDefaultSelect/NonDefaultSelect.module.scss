@@ -1,0 +1,45 @@
+.selected {
+	border-right: 1px solid;
+	border-left: 1px solid;
+	border-top: 1px solid;
+	max-height: 80px;
+	overflow: auto;
+
+	&__disabled {
+		color: #c2c2c2;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+
+	h3 {
+		padding: 8px 12px 8px 24px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+
+		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6H0z" fill="%23333"/></svg>');
+		background-repeat: no-repeat;
+		background-position: right 0.75rem center;
+		background-size: 0.8rem;
+	}
+}
+
+.checkbox-container {
+	padding: 8px 12px 8px 24px;
+
+	display: flex;
+	align-items: center;
+}
+
+.checkbox-container_checkbox {
+	margin-right: 8px;
+	width: 16px;
+	height: 16px;
+	accent-color: black;
+	cursor: pointer;
+}
+
+.checkbox-container_custom {
+	cursor: pointer;
+	font-size: 14px;
+}

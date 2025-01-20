@@ -1,0 +1,22 @@
+.title {
+	color: #000;
+	font-feature-settings: 'liga' off, 'clig' off;
+
+	font-family: Karla;
+	text-align: center;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 133%;
+	letter-spacing: 6px;
+
+	&:not(:last-child) {
+		margin-bottom: calc(60rem / 16);
+	}
+}
+
+.edit {
+	display: flex;
+	flex-direction: column;
+	gap: calc(60rem / 16);
+}
