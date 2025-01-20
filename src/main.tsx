@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router';
+import Edit from './components/sceens/Edit/Edit.tsx';
 import './index.module.scss';
 import Layout from './Layout.tsx';
 
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'edit',
-				element: <>user edit</>,
+				element: <Edit />,
 			},
 		],
 	},

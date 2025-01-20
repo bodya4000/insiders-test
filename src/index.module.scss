@@ -84,3 +84,17 @@ h6 {
 	font-size: inherit;
 	font-weight: 400;
 }
+.layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+	width: calc(1120rem / 16);
+	padding: calc(60rem / 16) calc(80rem / 16);
+	border: 1px solid #000;
+	margin: calc(80rem / 16) auto;
+	min-height: 100%;
+}
